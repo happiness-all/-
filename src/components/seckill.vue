@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <router-view></router-view>
-  </div>
+  <div>seckill</div>
 </template>
 <script>
 export default {};

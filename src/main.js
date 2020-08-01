@@ -4,11 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+// 生成路由实例
+import router from './router';
 Vue.config.productionTip = false
 Vue.use(element)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  router,
   components: { App },
   template: '<App/>'
 })
