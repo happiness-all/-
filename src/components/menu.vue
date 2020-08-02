@@ -180,6 +180,11 @@ export default {
 };
 </script>
 <style lang="stylus">
+.cell {
+  text-align: center;
+  font-weight: normal;
+}
+
 h3 {
   margin-bottom: 30px;
   font-family: '宋体';

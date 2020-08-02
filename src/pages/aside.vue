@@ -21,9 +21,15 @@
           <span slot="title">系统设置</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item index="1-1" @click="pushchange()">菜单管理</el-menu-item>
-          <el-menu-item index="1-2">角色管理</el-menu-item>
-          <el-menu-item index="1-3">管理员管理</el-menu-item>
+          <router-link to="/menu">
+            <el-menu-item index="1-1">菜单管理</el-menu-item>
+          </router-link>
+          <router-link to="/role">
+            <el-menu-item index="1-2">角色管理</el-menu-item>
+          </router-link>
+          <router-link to="/user">
+            <el-menu-item index="1-3">管理员管理</el-menu-item>
+          </router-link>
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="3">
@@ -32,12 +38,24 @@
           <span slot="title">商城管理</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item index="2-1">商品分类</el-menu-item>
-          <el-menu-item index="2-2">商品规格</el-menu-item>
-          <el-menu-item index="2-3">商品管理</el-menu-item>
-          <el-menu-item index="2-4">会员管理</el-menu-item>
-          <el-menu-item index="2-5">轮播图管理</el-menu-item>
-          <el-menu-item index="2-6">秒杀活动</el-menu-item>
+          <router-link to="/category">
+            <el-menu-item index="2-1">商品分类</el-menu-item>
+          </router-link>
+          <router-link to="/specs">
+            <el-menu-item index="2-2">商品规格</el-menu-item>
+          </router-link>
+          <router-link to="/goods">
+            <el-menu-item index="2-3">商品管理</el-menu-item>
+          </router-link>
+          <router-link to="/member">
+            <el-menu-item index="2-4">会员管理</el-menu-item>
+          </router-link>
+          <router-link to="/banner">
+            <el-menu-item index="2-5">轮播图管理</el-menu-item>
+          </router-link>
+          <router-link to="/seckill">
+            <el-menu-item index="2-6">秒杀活动</el-menu-item>
+          </router-link>
         </el-menu-item-group>
       </el-submenu>
     </el-menu>
@@ -54,9 +72,6 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
-    },
-    pushchange(i) {
-      console.log(i);
     }
   }
 };
@@ -82,12 +97,12 @@ export default {
   font-size: 16px;
 }
 
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
 .el-menu-item {
   font-size: 16px;
-
-  a {
-    text-decoration: none;
-    color: #fff;
-  }
 }
 </style>
