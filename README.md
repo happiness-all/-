@@ -1,21 +1,24 @@
-# uise
+#### 项目解读 ####
 
-> A Vue.js project
+本项目主要是由element-ui框架和vue框架组合而成的后台管理项目，并引入了loadsh等常用js库。
 
-## Build Setup
+前端解决跨域问题
 
-``` bash
-# install dependencies
-npm install
+在config --index.js中设置
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
+```js
+proxyTable: {
+       // 跨域代理问题，d代理设置
+       // '/api'请求会被捕捉并代码
+       '/api': {
+         //需要代理的目标地址
+         target: 'http://localhost:3000',
+         changeOrigin: true,//是否跨域
+         //地址改写  若后台的请求地址与前端不一样可以用此方法改写
+         PathRewrite: {
+           '/api': '/',//改写后的数据
+         }
+       }
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+本项目采用的是后台处理跨域

@@ -2,27 +2,28 @@ import vue from 'vue';
 import router from 'vue-router';
 vue.use(router);
 // 引用路由文件
-import login from '../pages/login';
-import layout from '../pages/layout';
+import login from "../components/login";
+import layout from '../payload/layout';
 import index from '../components/index';
-import menu from '../components/menu';
-import role from '../components/role';
+import roles from '../components//power/roles';
 import user from '../components/user';
-import specs from '../components/specs';
-import seckill from '../components/seckill';
-import goods from '../components/goods';
-import category from '../components/category';
-import banner from '../components/banner';
-import member from '../components/member';
+import cate from '../components/goods/cart'
+import rights from '../components/power/rights'
+import goods from '../components/goods/goods'
+import Add from '../components/goods/Add'
+import edit from '../components/goods/editgoods'
+import orders from '../components/orders/order'
+import reports from '../components/reports'
+import params from '../components/goods/params'
 // 暴露组件
-export default new router({
+let Router = new router({
     routes: [
         {
             path: '/login',
             component: login
         },
         {
-            path: '/',
+            path: '/home',
             component: layout,
             children: [
                 {
@@ -30,34 +31,54 @@ export default new router({
                     component: index
 
                 }, {
-                    path: '/menu',
-                    component: menu
+                    path: '/roles',
+                    component: roles
                 }, {
-                    path: '/role',
-                    component: role
-                }, {
-                    path: '/user',
+                    path: '/users',
                     component: user
                 }, {
-                    path: '/category',
-                    component: category
-                }, {
-                    path: '/specs',
-                    component: specs
-                }, {
+                    path: '/categories',
+                    component: cate
+                },
+                {
+                    path: '/rights',
+                    component: rights
+                },
+                {
                     path: '/goods',
                     component: goods
+                },
+                {
+                    path: '/goods/add',
+                    component: Add
                 }, {
-                    path: '/member',
-                    component: member
+                    path: '/goods/edit/:id',
+                    component: edit
                 }, {
-                    path: '/banner',
-                    component: banner
+                    path: '/orders',
+                    component: orders
                 }, {
-                    path: '/seckill',
-                    component: seckill
+                    path: '/reports',
+                    component: reports
+                }, {
+                    path: '/params',
+                    component: params
                 }
             ]
         }
-    ]
+    ],
 })
+// 挂载路由导航守卫
+Router.beforeEach((to, from, next) => {
+    if (to.path == '/login') {
+        next();
+    } else {
+        let token = window.sessionStorage.getItem('token');
+        if (!token) {
+            next('/login')
+        } else {
+            next();
+        }
+    }
+})
+export default Router;
