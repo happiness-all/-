@@ -4,7 +4,9 @@
 <script>
 // 1.
 import echarts from "echarts";
-export default {};
+export default {
+  
+};
 </script>
 <style lang="stylus" scoped>
 #users

@@ -75,6 +75,7 @@ Router.beforeEach((to, from, next) => {
     } else {
         let token = window.sessionStorage.getItem('token');
         if (!token) {
+            sessionStorage.setItem("token", '');
             next('/login')
         } else {
             next();

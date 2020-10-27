@@ -55,6 +55,7 @@ export default {
   methods: {
     //获取所有的菜单
     getMenuList() {
+      console.log(window.sessionStorage.getItem('token'))
       this.$axios
         .get("menus")
         .then(response => {

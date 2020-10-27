@@ -68,7 +68,7 @@ export default {
                 });
                 let token = resg.data.token;
                 sessionStorage.setItem("token", token);
-                this.$router.replace("/index");
+                this.$router.push("/index");
               } else {
                 this.$message.error("登录失败,请重新输入");
               }
