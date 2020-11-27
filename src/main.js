@@ -17,9 +17,12 @@ import axios from 'axios';
 // 通过axios请求拦截器添加token，保证拥有获取数据的权限
 // 配置axios的根路径
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/';
-axios.defaults.headers.common['Authorization'] = window.sessionStorage.getItem('token');
+// axios.defaults.headers.common['Authorization'] = window.sessionStorage.getItem('token') || '';
 axios.interceptors.request.use(config => {
   // 开始进度条
+  if (window.sessionStorage.token) {
+    config.headers.Authorization = window.sessionStorage.getItem('token');
+  }
   Nprogress.start();
   return config
 })
